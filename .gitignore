@@ -1,0 +1,40 @@
+# Credentials and account files
+.env
+.env.*
+*.pem
+*.key
+*.p12
+kaggle.json
+credentials*.json
+token*.json
+# Learned artifacts and private inputs/outputs
+/artifacts/
+/data/
+/Large-Model-Track/
+/HAU/
+/run/
+/cuhkx_run/
+/output/
+/tmp/
+*.joblib
+*.csv
+*.zip
+*.7z
+*.log
+# Local environments and bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+# TeX and editor build products
+paper/build/
+*.aux
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

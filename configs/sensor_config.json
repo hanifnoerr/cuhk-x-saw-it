@@ -1,0 +1,21 @@
+{
+  "run_id": "exp003_imu_emotion_rf",
+  "seed": 20260913,
+  "sample_hz": 10.0,
+  "trees": 400,
+  "workers": 4,
+  "inner_folds": 4,
+  "leaf_sizes": [
+    2,
+    6
+  ],
+  "prior_blends": [
+    0.0,
+    0.25,
+    0.5
+  ],
+  "override_margin": 0.1,
+  "max_gap_seconds": 1.0,
+  "minimum_device_samples": 8,
+  "api_budget_usd": 0
+}

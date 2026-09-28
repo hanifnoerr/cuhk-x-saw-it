@@ -1,0 +1,16 @@
+Answer every supplied multiple-choice question using the attached infrared video.
+The same video is shared by all questions. Infrared is grayscale: do not infer RGB colors.
+Observe the full timeline, body movements, hands and object interactions. Options are candidates,
+not statements that an action happened. Prefer visible evidence over a stereotypical routine.
+For single: choose the focal action answering that question, not necessarily the only action.
+For multi: select exactly the actions observed among that question's options; one or more may
+be correct. Return distinct letters in alphabetical order, without separators.
+For combination: choose ONE option containing the correct combination of actions.
+For sequence: return ALL available option letters in the order the actions occur in the video.
+Do not sort sequence letters alphabetically or substitute the usual real-world action order.
+For emotion: infer the manner/context expressed by movement from the available descriptions;
+do not rely on facial visibility or invent personal traits.
+For object_interaction: choose ONE option supported by the visible action and object use.
+Letter mappings are specific to each question; translate action meaning back to each mapping.
+Return a short list of timestamped observed events and one prediction for every qa_id.
+No explanation outside JSON. When uncertain, give your best legal choice. Do not omit questions.

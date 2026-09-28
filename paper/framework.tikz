@@ -1,0 +1,30 @@
+\begin{tikzpicture}[x=0.98cm,y=1cm,>=Latex,
+ box/.style={draw=black!65,rounded corners=2pt,align=center,text width=3.05cm,minimum height=1.08cm,font=\fontsize{10}{12}\selectfont,inner sep=4pt},
+ input/.style={box,fill=black!3},
+ fixed/.style={box,fill=blue!5},
+ learned/.style={box,fill=orange!10},
+ arr/.style={->,line width=.7pt},
+ lbl/.style={font=\fontsize{9}{11}\selectfont,fill=white,inner sep=2pt}]
+\node[input] (ir) at (0,0) {IR video and all\\questions for the clip};
+\node[fixed] (api) at (4,0) {Gemini API\\4 fps requested\\No fine-tuning};
+\node[fixed] (parse) at (8,0) {Validate JSON\\and answer contract\\$g_i$};
+\node[fixed] (cons) at (12,0) {Exact-text matches\\Combination answers\\update multi, $h_i$};
+\draw[arr] (ir)--(api);
+\draw[arr] (api)--(parse);
+\draw[arr] (parse)--(cons);
+\node[input] (imu) at (0,-2.65) {IMU streams\\Five device positions};
+\node[fixed] (feat) at (4,-2.65) {Check availability\\Resample to 10 Hz\\1,010 features};
+\node[fixed] (score) at (8,-2.65) {Map RF to options\\Blend with prior\\$p_i=0.5q_i+0.5\pi_i$};
+\node[fixed] (select) at (12,-2.65) {Select IMU only for\\emotion, $m_i\geq2$,\\$\Delta_i\geq0.10$};
+\draw[arr] (imu)--(feat);
+\draw[arr] (feat)--(score);
+\draw[arr] (score)--(select);
+\draw[arr] (cons)--node[lbl,right]{fallback $h_i$}(select);
+\draw[arr] (ir.south) -- (0,-1.32) -- node[lbl,above]{question options} (8,-1.32) -- (score.north);
+\node[learned] (artifacts) at (8,-5.0) {RF and imputer\\Option counts\\Frozen parameters};
+\draw[arr,dashed] (artifacts)--(score);
+\node[input] (final) at (12,-5.0) {Final prediction\\$\hat y_i$};
+\draw[arr] (select)--(final);
+\node[align=left,font=\fontsize{10}{12}\selectfont,text width=6.9cm] at (2,-4.85)
+{The gate receives device availability $m_i$ with the IMU branch. The score gap is $\Delta_i=p_{i,(1)}-p_{i,(2)}$. Missing or ineligible IMU retains the fallback.};
+\end{tikzpicture}
